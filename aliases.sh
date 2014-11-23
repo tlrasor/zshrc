@@ -21,9 +21,7 @@ alias diskusage='du -hd1|sort -h'
 # custom shortcuts
 alias dlist="dumpr.sh --list=list"
 alias turl="curl --socks5-hostname 127.0.0.1:9050 "
-alias phpup="php -S 127.0.0.1:9001"
 alias vagrant_reboot="vagrant destroy -f && vagrant up"
-alias psqlr='/usr/local/pgsql/bin/psql -U smdev -d saludmovil'
 alias diskanalize='baobab'
 
 alias pingoogle="ping 8.8.8.8"

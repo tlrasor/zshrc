@@ -20,5 +20,3 @@ cd "$ZSH_CUSTOM"
     load "lib/.*.sh"       # sources all libs
 cd -
 
-# Load autojump
-load "autojump.zsh" "$HOME/.autojump/etc/profile.d/"

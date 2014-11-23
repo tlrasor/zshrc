@@ -10,27 +10,24 @@ antigen bundles <<EOBUNDLES
 
   # Tools of the trade
   gem
-  composer
-  #bundler
-  symfony2
-  capistrano
+  mvn
+  common-aliases
+  gradle
+  pip
+
+  brew
 
   # More tools
   vagrant
-  debian
-  tmux
 
   # Meta
-  tmuxinator
-  command-not-found
   jimhester/per-directory-history
   zsh-users/zsh-syntax-highlighting
   colored-man
 
 EOBUNDLES
-
 # Load the theme.
-antigen theme desyncr/zshrc themes/af-magic-mod
+antigen theme apple
 
 # Tell antigen that you're done.
 antigen apply
