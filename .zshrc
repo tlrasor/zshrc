@@ -46,7 +46,7 @@ export VISUAL=vim
 export EDITOR=vim
 
 export JAVA_HOME=$(/usr/libexec/java_home -v1.8)
-
+export MAVEN_OPTS="-Xms1024m -Xmx4096m -XX:PermSize=512m"
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!

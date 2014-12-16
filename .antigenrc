@@ -9,23 +9,34 @@ antigen bundles <<EOBUNDLES
   bobthecow/git-flow-completion
 
   # Tools of the trade
-  gem
-  mvn
   common-aliases
   gradle
-  pip
 
-  brew
 
   # More tools
   vagrant
+  docker
 
   # Meta
   jimhester/per-directory-history
   zsh-users/zsh-syntax-highlighting
   colored-man
+  colorize
+  cp
 
 EOBUNDLES
+
+case `uname` in
+  Darwin)
+    antigen bundle brew
+    antigen bundle osx
+    ;;
+  Linux)
+    antigen bundle command-not-found
+    antigen bundle debian
+    ;;
+esac
+
 # Load the theme.
 antigen theme apple
 

@@ -16,7 +16,8 @@ source $ZSH_CUSTOM/.antigenrc
 source $ZSH_CUSTOM/functions.sh
 cd "$ZSH_CUSTOM"
     load "functions..*.sh" # sources any local functions files (functions.local.sh)
-    load "aliases.*.sh"    # sources all aliases files
+    load "aliases.sh" #source main aliases file
+    load "aliases..*.sh"    # sources all aliases files
     load "lib/.*.sh"       # sources all libs
 cd -
 
