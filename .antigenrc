@@ -8,7 +8,6 @@ antigen bundles <<EOBUNDLES
   cp
   bobthecow/git-flow-completion
   brew
-  gem
   git
   git-extras
   jimhester/per-directory-history
@@ -16,7 +15,7 @@ antigen bundles <<EOBUNDLES
   rsync
   unixorn/autoupdate-antigen.zshplugin
   vagrant
-  voronkovich/gitignore.plugin.zsh
+  #voronkovich/gitignore.plugin.zsh
   zsh-users/zsh-syntax-highlighting
 
 EOBUNDLES

@@ -1,67 +1,15 @@
 .zshrc
 ==========
 
-Repository to save my custom ZSH settings and themes.
+Repository to save my custom ZSH settings and themes. Work heavy based on [desyncr's repo](https://github.com/desyncr/zshrc)
 
-Install
+Prerequisites:
 -------
-* Install [Antigen](https://github.com/zsh-users/antigen) somewhere:
+* [Antigen](https://github.com/zsh-users/antigen):
 
         mkdir ~/.antigen/ && cd ~/.antigen/
         curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > antigen.zsh
         source antigen.zsh
-
-* Clone this repo somewhere:
-
-        cd ~
-        git clone git@github.com:asphxia/zsh.git
-
-* Hook it into .zshrc
-
-        echo "export ANTIGEN=~/.antigen/" >> ~/.zshrc # exports Antigen path
-        echo "source ~/zsh/bootstrap.zsh" >> ~/.zshrc # loads out stuff
-
-* Alternatively, use my .zshrc:
-
-        mv ~/.zshrc ~/.zshrc.$(date +%s)
-        ln -s ~/zsh/.zshrc
-
-* Restart zsh and done!
-
-
-Optional
---------
-
-* Install autojump
-
-        git clone git://github.com/joelthelion/autojump.git
-        cd autojump
-        ./install.sh
-
-
-Configure
----------
-
-Check ``bootstrap.zsh`` for examples and default configuration.
-
-If you run into problems with themes or the prompt run the following command and restart the shell:
-
-    sed -i "s/prompt /#prompt /g" ~/.zshrc
-
-
-Customize
--------
-``bootstrap.zsh`` is reponsible for loading any custom script such as ``functions.sh``, ``aliases.sh`` and any custom library.
-
-The files ``functions.sh`` and ``aliases.sh`` holds any custom function and aliases respectibly.
-
-Custom themes are located at ``themes`` directory . Custom libraries are located at ``lib`` directory.
-
-
-
-## Contact and Feedback
-
-If you'd like to contribute to the project or file a bug or feature request, please visit [the project page][1].
 
 ## License
 
