@@ -3,39 +3,23 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundles <<EOBUNDLES
-  # Git and github autocompletions and aliases
-  git
-  git-extras
-  bobthecow/git-flow-completion
-
-  # Tools of the trade
-  common-aliases
-  gradle
-
-
-  # More tools
-  vagrant
-  docker
-
-  # Meta
-  jimhester/per-directory-history
-  zsh-users/zsh-syntax-highlighting
   colored-man
   colorize
   cp
+  bobthecow/git-flow-completion
+  brew
+  gem
+  git
+  git-extras
+  jimhester/per-directory-history
+  osx
+  rsync
+  unixorn/autoupdate-antigen.zshplugin
+  vagrant
+  voronkovich/gitignore.plugin.zsh
+  zsh-users/zsh-syntax-highlighting
 
 EOBUNDLES
-
-case `uname` in
-  Darwin)
-    antigen bundle brew
-    antigen bundle osx
-    ;;
-  Linux)
-    antigen bundle command-not-found
-    antigen bundle debian
-    ;;
-esac
 
 # Load the theme.
 antigen theme apple
