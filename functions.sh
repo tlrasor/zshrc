@@ -129,3 +129,8 @@ psg() {
         done
     fi
 }
+
+echo_color() {
+  let $# || { echo Usage: echo_color PRIMARY_COLOR TEXT; return 1;}
+  echo $fg[$1] $2
+}

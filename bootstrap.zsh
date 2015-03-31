@@ -15,6 +15,7 @@ source $ZSH_CUSTOM/.antigenrc
 # Load zsh custom sources
 source $ZSH_CUSTOM/functions.sh
 cd "$ZSH_CUSTOM"
+    load "exports.*.sh" #sources any export files for env variables
     load "functions..*.sh" # sources any local functions files (functions.local.sh)
     load "aliases.sh" #source main aliases file
     load "aliases..*.sh"    # sources all aliases files

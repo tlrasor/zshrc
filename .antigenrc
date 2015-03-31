@@ -8,15 +8,15 @@ antigen bundles <<EOBUNDLES
   cp
   bobthecow/git-flow-completion
   brew
+  brew-cask
   git
   git-extras
+  gradle
   jimhester/per-directory-history
   osx
   rsync
   unixorn/autoupdate-antigen.zshplugin
   vagrant
-  #voronkovich/gitignore.plugin.zsh
-  zsh-users/zsh-syntax-highlighting
 
 EOBUNDLES
 

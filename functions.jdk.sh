@@ -6,6 +6,7 @@ function setjdk() {
     fi
   export JAVA_HOME=`/usr/libexec/java_home -v $@`
   export PATH=$JAVA_HOME/bin:$PATH
+  echo "JAVA_HOME set to $JAVA_HOME"
   fi
 }
 

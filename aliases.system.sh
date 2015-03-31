@@ -10,3 +10,5 @@ zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f
 alias df="df -h "
 alias diskusage='du -hd1'
 alias psgrep="ps aux | grep "
+
+alias homebrew='brew'
