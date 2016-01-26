@@ -11,6 +11,8 @@
 
 ## install zsh git mvn curl
 
+brew install zsh git mvn wget cowsay
+
 echo "Creating Repos at /Users/$USER/Repos"
 mkdir -p /Users/$USER/Repos
 REPOS_DIR = /Users/$USER/Repos
@@ -32,4 +34,5 @@ git checkout osx
 ln -s $REPOS_DIR/zshrc/.zshrc ~/.zshrc
 
 sudo chsh -s /bin/zsh
+
 

@@ -3,18 +3,16 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundles <<EOBUNDLES
-  colored-man
-  colorize
-  cp
-  bobthecow/git-flow-completion
   brew
   brew-cask
+  command-not-found
+  djui/alias-tips
   git
-  git-extras
-  gradle
+  mvn
   jimhester/per-directory-history
   osx
   rsync
+  Tarrasch/zsh-colors
   unixorn/autoupdate-antigen.zshplugin
   vagrant
 

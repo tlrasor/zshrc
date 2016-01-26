@@ -7,5 +7,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
 
-alias ping_google="ping 8.8.8.8"
 alias external_ip='curl ifconfig.me'
+
+alias ytdl='youtube-dl -o "$HOME/Downloads/%(extractor)s/%(title)s-%(id)s.%(ext)s" --verbose'
+alias ytdlmp3='youtube-dl -o "$HOME/Downloads/%(extractor)s/%(title)s-%(id)s.%(ext)s" --verbose --extract-audio --audio-format mp3'

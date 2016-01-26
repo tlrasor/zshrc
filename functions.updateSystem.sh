@@ -6,7 +6,8 @@ updateAppleSoftware() {
 updateHomebrew() {
   echo "$fg[yellow] Updating Homebrew $fg[default] "
   brew update
-  brew upgrade
+  brew cask update
+  brew upgrade --all
 
   echo "$fg[yellow] Cleaning up Homebrew $fg[default] "
   brew cleanup
@@ -20,24 +21,31 @@ updateGems() {
   gem update
 }
 
-updateGvm() {
-  echo "$fg[yellow] Updating gvm $fg[default]"
-  gvm selfupdate
+updateSdk() {
+  echo "$fg[yellow] Updating sdkman $fg[default]"
+  sdk selfupdate
 }
 
 updatePip() {
   echo "$fg[yellow] Updating setuptools, distribute and pip $fg[default]"
-  pip install --update setuptools
-  pip install --update distribute
-  pip install --update pip
+  pip install -U setuptools
+  pip install -U distribute
+  pip install -U pip
   echo "$fg[yellow] Updating outdated pip packages $fg[default]"
   logger "Updating outdated pip packages. Output of pip list --outdated: $(pip list --outdated)"
-  pip list --outdated | grep "\d" | cut -d "(" -f 1 | xargs pip install --upgrade
+  pip list --outdated | grep "\d" | cut -d "(" -f 1 | xargs pip install -U
+}
+
+updateVagrant() {
+  echo "$fg[yellow] Updating vagrant plugins $fg[default]"
+  vagrant plugin update
 }
 
 updateSystem() {
   updateAppleSoftware
   updateHomebrew
   updateGems
-  updateGvm
+  updateSdk
+  updatePip
+  updateVagrant
 }
