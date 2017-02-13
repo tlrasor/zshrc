@@ -10,3 +10,7 @@ export VAGRANT_PUBLIC_KEY="/Users/travis/Repos/vagrant-settings/id_rsa.pub"
 export VAGRANT_PRIVATE_KEY="/Users/travis/Repos/vagrant-settings/id_rsa"
 
 #export PYTHONPATH="$(pyenv which python)"
+
+export GOPATH=$HOME/Repos/go
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/opt/go/libexec/bin

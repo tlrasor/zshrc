@@ -9,3 +9,5 @@ export EDITOR=subl
 
 export BREW_PREFIX=$(brew --prefix)
 export BYOBU_PREFIX="$BREW_PREFIX"
+
+export disassembled_dir="/Volumes/External/Btsync/DisassembledShow"

@@ -5,14 +5,18 @@ antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
   brew
   brew-cask
+  bundler
   command-not-found
   djui/alias-tips
-  git
-  mvn
+  gitfast
   jimhester/per-directory-history
+  mvn
+  npm
   osx
+  rails
   rsync
   Tarrasch/zsh-colors
+  tugboat
   unixorn/autoupdate-antigen.zshplugin
   vagrant
 

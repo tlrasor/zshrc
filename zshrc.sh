@@ -48,10 +48,9 @@ eval "$(rbenv init -)"
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 #PYENV_VERSION="2.7.11 3.5.1"
 pyenv global 2.7.11 3.5.1
-
 
 #add ~/bin to path
 PATH=$PATH:$HOME/bin 
@@ -66,5 +65,6 @@ if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
 fi
   
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/travis/.sdkman" 
 [[ -s "/Users/travis/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/travis/.sdkman/bin/sdkman-init.sh"
 

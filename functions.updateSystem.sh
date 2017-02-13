@@ -6,8 +6,7 @@ updateAppleSoftware() {
 updateHomebrew() {
   echo "$fg[yellow] Updating Homebrew $fg[default] "
   brew update
-  brew cask update
-  brew upgrade --all
+  brew upgrade
 
   echo "$fg[yellow] Cleaning up Homebrew $fg[default] "
   brew cleanup
@@ -33,12 +32,22 @@ updatePip() {
   pip install -U pip
   echo "$fg[yellow] Updating outdated pip packages $fg[default]"
   logger "Updating outdated pip packages. Output of pip list --outdated: $(pip list --outdated)"
-  pip list --outdated | grep "\d" | cut -d "(" -f 1 | xargs pip install -U
+  pip list --outdated | grep "\d" | cut -d "(" -f 1 | xargs pip install --format=legacy -U
 }
 
 updateVagrant() {
   echo "$fg[yellow] Updating vagrant plugins $fg[default]"
   vagrant plugin update
+}
+
+updateNpm() {
+  echo "$fg[yellow] Updating npm packages $fg[default]"
+  set -e
+  set -x
+  for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2)
+  do
+      npm -g install "$package"
+  done
 }
 
 updateSystem() {
@@ -48,4 +57,5 @@ updateSystem() {
   updateSdk
   updatePip
   updateVagrant
+  updateNpm
 }
