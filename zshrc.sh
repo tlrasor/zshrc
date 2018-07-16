@@ -33,7 +33,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 #antigen plugin manager
-export ANTIGEN=~/.antigen/
+export ANTIGEN=~/.antigen
 [[ -z $ZSH_CUSTOM ]] && ZSH_CUSTOM=$(dirname $(readlink ~/.zshrc))
 source $ZSH_CUSTOM/bootstrap.zsh
 
@@ -42,8 +42,8 @@ COREUTILSPATH=$(brew --prefix coreutils)/libexec/gnubin
 PATH=$COREUTILSPATH:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
-#ruby
-eval "$(rbenv init -)"
+#rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -55,9 +55,6 @@ pyenv global 2.7.11 3.5.1
 #add ~/bin to path
 PATH=$PATH:$HOME/bin 
 
-#fzf fuzzy search
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 #lunchy
 LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
 if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
@@ -67,4 +64,3 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/travis/.sdkman" 
 [[ -s "/Users/travis/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/travis/.sdkman/bin/sdkman-init.sh"
-

@@ -1,61 +1,32 @@
 updateAppleSoftware() {
-  echo "$fg[yellow] Updating OS X Software Updates $fg[default] "
+  echo "$fg[yellow] Running OS X Software Updates $fg[default] "
   sudo softwareupdate --install --all
 }
 
 updateHomebrew() {
-  echo "$fg[yellow] Updating Homebrew $fg[default] "
+  echo "$fg[yellow] Updating Homebrew $fg[default]"
   brew update
+  echo "$fg[yellow] Upgrading brews $fg[default]"
+  brew outdated
   brew upgrade
-
-  echo "$fg[yellow] Cleaning up Homebrew $fg[default] "
+  echo "$fg[yellow] Upgrading casks $fg[default]"
+  brew cask outdated
+  brew cask upgrade
   brew cleanup
   brew cask cleanup
 }
 
-updateGems() {
-  echo "$fg[yellow] Updating gem $fg[default]"
-  gem update --system
-  echo "$fg[yellow] Updating installed gems $fg[default]"
-  gem update
-}
-
-updateSdk() {
+updateSdkman() {
   echo "$fg[yellow] Updating sdkman $fg[default]"
   sdk selfupdate
-}
-
-updatePip() {
-  echo "$fg[yellow] Updating setuptools, distribute and pip $fg[default]"
-  pip install -U setuptools
-  pip install -U distribute
-  pip install -U pip
-  echo "$fg[yellow] Updating outdated pip packages $fg[default]"
-  logger "Updating outdated pip packages. Output of pip list --outdated: $(pip list --outdated)"
-  pip list --outdated | grep "\d" | cut -d "(" -f 1 | xargs pip install --format=legacy -U
-}
-
-updateVagrant() {
-  echo "$fg[yellow] Updating vagrant plugins $fg[default]"
-  vagrant plugin update
-}
-
-updateNpm() {
-  echo "$fg[yellow] Updating npm packages $fg[default]"
-  set -e
-  set -x
-  for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2)
-  do
-      npm -g install "$package"
-  done
+  sdk update
+  sdk flush broadcast
+  sdk flush archives
+  sdk flush temp
 }
 
 updateSystem() {
   updateAppleSoftware
   updateHomebrew
-  updateGems
-  updateSdk
-  updatePip
-  updateVagrant
-  updateNpm
+  updateSdkman
 }

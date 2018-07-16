@@ -3,22 +3,21 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundles <<EOBUNDLES
-  brew
-  brew-cask
   bundler
   command-not-found
   djui/alias-tips
+  docker
   gitfast
+  gko/ssh-connect
   jimhester/per-directory-history
   mvn
-  npm
-  osx
-  rails
+  rake-fast
+  rbenv
   rsync
   Tarrasch/zsh-colors
-  tugboat
   unixorn/autoupdate-antigen.zshplugin
   vagrant
+  voronkovich/gitignore.plugin.zsh
 
 EOBUNDLES
 
