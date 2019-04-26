@@ -5,11 +5,12 @@ antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
   bundler
   command-not-found
-  djui/alias-tips
   docker
   gitfast
   gko/ssh-connect
+  helm
   jimhester/per-directory-history
+  mroth/evalcache 
   mvn
   rake-fast
   rbenv
@@ -26,3 +27,4 @@ antigen theme apple
 
 # Tell antigen that you're done.
 antigen apply
+

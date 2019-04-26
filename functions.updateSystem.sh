@@ -13,14 +13,12 @@ updateHomebrew() {
   brew cask outdated
   brew cask upgrade
   brew cleanup
-  brew cask cleanup
 }
 
 updateSdkman() {
   echo "$fg[yellow] Updating sdkman $fg[default]"
   sdk selfupdate
   sdk update
-  sdk flush broadcast
   sdk flush archives
   sdk flush temp
 }

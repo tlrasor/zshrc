@@ -10,9 +10,11 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.config/zsh_history
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
+# # Use modern completion system
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+# autoload -Uz compinit && compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -43,14 +45,14 @@ PATH=$COREUTILSPATH:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
 #rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which rbenv > /dev/null; then _evalcache rbenv init -; fi
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-#PYENV_VERSION="2.7.11 3.5.1"
-pyenv global 2.7.11 3.5.1
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then _evalcache pyenv init -; fi
 
 #add ~/bin to path
 PATH=$PATH:$HOME/bin 
@@ -63,4 +65,4 @@ fi
   
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/travis/.sdkman" 
-[[ -s "/Users/travis/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/travis/.sdkman/bin/sdkman-init.sh"
+[[ -s "/Users/travis/.sdkman/bin/sdkman-init.sh" ]] && source /Users/travis/.sdkman/bin/sdkman-init.sh
