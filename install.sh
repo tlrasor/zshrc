@@ -3,8 +3,6 @@
 ##install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-## install sublime
-brew install --cask sublime-text
 
 #setup antigen and local profile
 echo "Creating Repos at /Users/$USER/Repos"
@@ -23,9 +21,7 @@ ln -s $REPOS_DIR/zshrc/.zshrc ~/.zshrc
 
 
 
-
-## install git curl lsd lunchy
-brew install install git curl lsd lunchy  wget cowsay
+source "./brew-installs.sh"
 
 
 
