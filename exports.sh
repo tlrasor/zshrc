@@ -8,7 +8,7 @@ export VISUAL=subl
 export EDITOR=subl
 
 export BREW_PREFIX=$(brew --prefix)
-export BYOBU_PREFIX=$BREW_PREFIX
+export HOMEBREW_FORCE_BREWED_CURL=1
 
 export M2_HOME=/Users/travis/.sdkman/candidates/maven/current
 export M2=/Users/travis/.sdkman/candidates/maven/current/bin

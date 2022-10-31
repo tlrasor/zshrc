@@ -15,7 +15,7 @@ source $ZSH_CUSTOM/.antigenrc
 # Load zsh custom sources
 source $ZSH_CUSTOM/utils.zsh
 
-load "plugins.*.zsh" "$ZSH_CUSTOM" # sources custom plugins 
-load "exports.*.sh" "$ZSH_CUSTOM" # sources any export files for env variables
-load "functions.*.zsh" "$ZSH_CUSTOM" # sources any local functions files (functions.local.sh)
-load "aliases.*.sh" "$ZSH_CUSTOM"    # sources all aliases files
+load "plugins.*sh" "$ZSH_CUSTOM" # sources custom plugins 
+load "exports.*sh" "$ZSH_CUSTOM" # sources any export files for env variables
+load "functions.*sh" "$ZSH_CUSTOM" # sources any local functions files (functions.local.sh)
+load "aliases.*sh" "$ZSH_CUSTOM"    # sources all aliases files

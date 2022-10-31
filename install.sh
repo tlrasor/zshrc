@@ -1,38 +1,38 @@
-#!/bin/env bash
-## install script
-
-## install java
-
-## install xcode tools
-
-## install sublime
+#!/bin/env zsh # new versions of osx use zsh
 
 ##install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-## install zsh git mvn curl
+## install sublime
+brew install --cask sublime-text
 
-brew install zsh git mvn wget cowsay
-
+#setup antigen and local profile
 echo "Creating Repos at /Users/$USER/Repos"
 mkdir -p /Users/$USER/Repos
 REPOS_DIR = /Users/$USER/Repos
-git clone https://github.com/junegunn/fzf.git
-ln -s $REPOS_DIR/fzf ~/.fzf
 
 git clone https://github.com/zsh-users/antigen.git
 ln -s $REPOS_DIR/antigen ~/.antigen
 
-git clone https://github.com/wayneeseguin/rvm.git
-ln -s $REPOS_DIR/rvm ~/.rvm
 
-curl -s api.gvmtool.net | bash
-mv ~/.gvm $REPOS_DIR/gvm
-ln -s $REPOS_DIR/gvm ~/.gvm
+
 
 git clone https://github.com/tlrasor/zshrc.git
 git checkout osx
 ln -s $REPOS_DIR/zshrc/.zshrc ~/.zshrc
 
-sudo chsh -s /bin/zsh
+
+
+
+## install git curl lsd lunchy
+brew install install git curl lsd lunchy  wget cowsay
+
+
+
+#install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+
+#install sdkman
+curl -s "https://get.sdkman.io" | bash 
 
 

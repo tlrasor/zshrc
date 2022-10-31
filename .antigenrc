@@ -7,17 +7,11 @@ antigen bundles <<EOBUNDLES
   command-not-found
   docker
   gitfast
-  gko/ssh-connect
-  helm
   jimhester/per-directory-history
   mroth/evalcache 
-  mvn
-  rake-fast
+  poetry
   rbenv
-  rsync
-  Tarrasch/zsh-colors
   unixorn/autoupdate-antigen.zshplugin
-  vagrant
   voronkovich/gitignore.plugin.zsh
 
 EOBUNDLES

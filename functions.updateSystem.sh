@@ -10,8 +10,8 @@ updateHomebrew() {
   brew outdated
   brew upgrade
   echo "$fg[yellow] Upgrading casks $fg[default]"
-  brew cask outdated
-  brew cask upgrade
+  brew outdated --cask
+  brew upgrade --cask
   brew cleanup
 }
 
@@ -27,4 +27,5 @@ updateSystem() {
   updateAppleSoftware
   updateHomebrew
   updateSdkman
+  poetry self update
 }

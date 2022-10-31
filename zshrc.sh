@@ -13,6 +13,7 @@ HISTFILE=~/.config/zsh_history
 # # Use modern completion system
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+  # FPATH+=~/.zfunc
 fi
 # autoload -Uz compinit && compinit
 
@@ -44,24 +45,32 @@ COREUTILSPATH=$(brew --prefix coreutils)/libexec/gnubin
 PATH=$COREUTILSPATH:$PATH
 PATH=/usr/local/sbin:/usr/local/bin:$PATH
 
+#add openssl to pkg config
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/opt/openssl/lib/pkgconfig
+
 #rbenv
 # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which rbenv > /dev/null; then _evalcache rbenv init -; fi
 
 #pyenv
+export PYENV_SHELL=zsh
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 # if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv > /dev/null; then _evalcache pyenv init -; fi
+if which pyenv > /dev/null; then 
+  eval "$(pyenv init --path)"
+  _evalcache pyenv init -; 
+fi
+
+#poetry (python)
+export PATH="/Users/travis/.local/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 #add ~/bin to path
 PATH=$PATH:$HOME/bin 
 
-#lunchy
-LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
-if [ -f $LUNCHY_DIR/lunchy-completion.zsh ]; then
-  . $LUNCHY_DIR/lunchy-completion.zsh
-fi
   
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/travis/.sdkman" 
