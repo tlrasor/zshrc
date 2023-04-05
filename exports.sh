@@ -7,9 +7,11 @@ export GIT_EDITOR=subl
 export VISUAL=subl
 export EDITOR=subl
 
-export BREW_PREFIX=$(brew --prefix)
-export HOMEBREW_FORCE_BREWED_CURL=1
+if [[ $OSTYPE == 'darwin'* ]]; then
+    export BREW_PREFIX="$(brew --prefix)"
+    export HOMEBREW_FORCE_BREWED_CURL=1
+fi
 
-export M2_HOME=/Users/travis/.sdkman/candidates/maven/current
-export M2=/Users/travis/.sdkman/candidates/maven/current/bin
+export M2_HOME="${HOME}/.sdkman/candidates/maven/current"
+export M2="${HOME}/.sdkman/candidates/maven/current/bin"
 export MAVEN_OPTS="-Xms1024m -Xmx4096m"

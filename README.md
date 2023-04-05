@@ -1,15 +1,17 @@
 .zshrc
 ==========
 
-Repository to save my custom ZSH settings and themes. Work heavy based on [desyncr's repo][1]
+Repository to save my custom ZSH settings and themes. Work originally based on [desyncr's repo][1]
 
-Prerequisites:
+Prerequisites
 -------
-* [Antigen][2]:
+* zsh
+* [Antigen][2]
 
-        mkdir ~/.antigen/ && cd ~/.antigen/
-        curl -L https://raw.githubusercontent.com/zsh-users/antigen/master/antigen.zsh > antigen.zsh
-        source antigen.zsh
+
+Install
+-------
+Run the install script `install.sh` to install and setup. Edit it first, only works on macos and debian derivatives.
 
 ## License
 

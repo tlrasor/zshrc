@@ -4,19 +4,16 @@ convert_iso() {
   hdiutil convert -format UDRW -o $2 $1
 }
 
-
 sshak() {
   let $# || { echo Usage: sshak hostname; return 1;}
   cat ~/.ssh/id_rsa.pub | ssh $1 "(cat > tmp.pubkey ; mkdir -p .ssh ; touch .ssh/authorized_keys ; sed -i.bak -e '/$(awk '{print $NF}' ~/.ssh/id_rsa.pub)/d' .ssh/authorized_keys;  cat tmp.pubkey >> .ssh/authorized_keys; rm tmp.pubkey)"
 }
 
-vagrant() {
-    if [[ $@ == "rebuild" ]]; then
-        command vagrant destroy -f && vagrant up
-    else
-        command vagrant "$@"
-    fi
+sshak_argo() {
+  let $# || { echo Usage: sshak hostname; return 1;}
+  cat ~/.ssh/argo_deploy.rsa.pub | ssh $1 "(cat > tmp.pubkey ; mkdir -p .ssh ; touch .ssh/authorized_keys ; sed -i.bak -e '/$(awk '{print $NF}' ~/.ssh/id_rsa.pub)/d' .ssh/authorized_keys;  cat tmp.pubkey >> .ssh/authorized_keys; rm tmp.pubkey)"
 }
+
 
 git() {
     if [[ $1 == "cp" ]]; then
@@ -52,18 +49,9 @@ git() {
       IFS=','
       str="$*"
       IFS=$old
-      curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$str" > .gitignore
+      curl -sLw "\n" "https://www.toptal.com/developers/gitignore/api/$str" >> .gitignore
     else
         command git "$@"
-    fi
-}
-
-docker() {
-    if [[ $1 == "compose" ]]; then
-      shift
-      command docker-compose $@
-    else
-      command docker "$@"
     fi
 }
 
@@ -72,11 +60,6 @@ ctop() {
         --rm -ti \
         -v /var/run/docker.sock:/var/run/docker.sock \
         quay.io/vektorlab/ctop:latest
-}
-
-backgrounder() {
-  $@ >/dev/null 2>&1 &
-  echo $!
 }
 
 tarxz_dir() {
@@ -89,43 +72,3 @@ tarxz_dir() {
   tar -cvf - $1 | nice xz -9 -v -c --threads=0 - > $dest.tar.xz   
 }
 
-use_graal() {
-  graal_version=$(sdk list java | grep "installed" | grep "grl" | sort -k3 -b -r -t '|'  | cut -d '|' -f 6 | tr -d \[:space:\])
-  sdk use java $graal_version
-}
-
-use_ojdk() {
-  ojdk_version=$(sdk list java | grep "installed" | grep "adpt" | sort -k3 -b -r -t '|'  | cut -d '|' -f 6 | tr -d \[:space:\])
-  sdk use java $ojdk_version
-}
-
-swarm_deploy_init(){
-  name=${PWD##*/}
-  git remote add mormolykeia "deploy@mormolykeia1:/home/deploy/apps/$name"
-  git deploy setup -r "mormolykeia"
-  git deploy init
-
-   sed -i.bak -e 's/^run deploy\/before_restart/#&/' -- "deploy/after_push" && rm -- "deploy/after_push.bak"
-}
-
-init_buildx() {
-  docker buildx create --use --name mybuilder --driver-opt network=host --config=/Users/travis/Repos/zshrc/docker-buildx.toml
-  docker buildx inspect --bootstrap
-}
-
-# pyenv() {
-#   local command
-#   command="${1:-}"
-#   if [ "$#" -gt 0 ]; then
-#     shift
-#   fi
-
-#   case "$command" in
-#   rehash|shell)
-#     eval "$(pyenv "sh-$command" "$@")"
-#     ;;
-#   *)
-#     command pyenv "$command" "$@"
-#     ;;
-#   esac
-# }

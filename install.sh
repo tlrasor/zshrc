@@ -1,32 +1,29 @@
-#!/bin/env zsh # new versions of osx use zsh
+#!/usr/bin/env bash
 
-##install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
+if [[ $OSTYPE == 'darwin'* ]]; then
+    source "./install-macos-software.sh"
+elif [[ $OSTYPE == 'linux'* ]]; then
+    source "./install-linux-software.sh"
+else
+    echo "Dont know how to handle '${OSTYPE}'. Exiting..."
+    exit 1
+fi
 
 #setup antigen and local profile
-echo "Creating Repos at /Users/$USER/Repos"
-mkdir -p /Users/$USER/Repos
-REPOS_DIR = /Users/$USER/Repos
-
-git clone https://github.com/zsh-users/antigen.git
-ln -s $REPOS_DIR/antigen ~/.antigen
+echo "Creating Repos at ${HOME}/Repos"
+mkdir -p "${HOME}/Repos"
+REPOS_DIR="${HOME}/Repos"
 
 
+# Install antigen
+if ! [ -f "${HOME}/antigen.zsh" ]; then
+  curl -L git.io/antigen > "${HOME}/antigen.zsh"
+fi
 
 
 git clone https://github.com/tlrasor/zshrc.git
-git checkout osx
-ln -s $REPOS_DIR/zshrc/.zshrc ~/.zshrc
+ln -s "$REPOS_DIR/zshrc/zshrc.zsh" "${HOME}/.zshrc"
 
-
-
-source "./brew-installs.sh"
-
-
-
-#install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
 
 #install sdkman
 curl -s "https://get.sdkman.io" | bash 

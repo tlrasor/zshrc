@@ -1,7 +1,4 @@
-updateAppleSoftware() {
-  echo "$fg[yellow] Running OS X Software Updates $fg[default] "
-  sudo softwareupdate --install --all
-}
+#functions for updating macos
 
 updateHomebrew() {
   echo "$fg[yellow] Updating Homebrew $fg[default]"
@@ -24,8 +21,6 @@ updateSdkman() {
 }
 
 updateSystem() {
-  updateAppleSoftware
   updateHomebrew
   updateSdkman
-  poetry self update
 }
