@@ -5,33 +5,92 @@
 
 brew update
 
-brew install git wget cowsay lsd lunchy
+# general utils
+brew install -q <<BREW_UTILS
+	aria2
+	btop
+	cowsay
+	curl
+	ffmpeg
+	git 
+	htop
+	lsd
+	lunchy
+	wget
+	youtube-dl
+	
+BREW_UTILS
 
-# seems to be gone and not sure if needed anymore
-# brew install --cask retinizer
+# install general gui stuff
+brew install -q --cask <<BREW_CASKS 
+	adobe-acrobat-reader
+	brave-browser
+	caffeine
+	disk-inventory-x
+	easyeda
+	firefox
+	gimp
+	google-chrome
+	inkscape
+	iterm2
+	itsycal
+	rar
+	rectangle
+	slack
+	sublime-text
+	tunnelblick
+	vlc
+	xquartz
 
-brew install --cask caffeine itsycal rectangle sublime-text
+BREW_CASKS
 
-brew install --cask brave-browser firefox google-chrome
+#install microsoft stuff
+brew install -q --cask <<BREW_MSFT
+	azure-data-studio
+	microsoft-auto-update
+	microsoft-office 
+	microsoft-remote-desktop 
+	microsoft-teams
 
-brew install --cask adobe-acrobat-reader disk-inventory-x \
-					easyeda gimp handbrake inkscape   \
-					tunnelblick vlc xquartz intellij-idea-ce slack
+BREW_MSFT
 
+# install extra fonts
+brew tap homebrew/cask-fonts
+brew install -q --cask font-hack-nerd-font
 
-brew install --cask azure-data-studio microsoft-remote-desktop microsoft-teams \
-					microsoft-office
+# install tarsnap
+brew install -q tarsnap tarsnap-gui
 
+# Install general development tools
+brew install -q <<BREW_DEV_TOOLS
+	ansible
+	autoconf
+	autogen
+	automake
+	cmake
+	freetds
+	openssl
+	pre-commit
+	pkg-config
+	readline
+	shellcheck
+	sqlite3
+	xz
+	zlib
 
-# Install ruby development tools
-brew install rbenv ruby-build
+BREW_DEV_TOOLS
 
 # Install python development tools
-brew install pyenv poetry
+brew install -q pyenv poetry tcl-tk 
+
+# Install ruby development tools
+brew install -q rbenv ruby-build
 
 # Install node development tools
-brew install nodenv
+brew install -q nodenv
 
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
+# Install java development tools
+brew install -q --cask intellij-idea-ce
+
+
  
